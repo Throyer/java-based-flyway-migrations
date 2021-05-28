@@ -5,8 +5,8 @@ import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;
 public class V2021052812431622173419__tabela_marca extends BaseJavaMigration {
     public void migrate(Context context) throws Exception {
-        var create = using(context.getConnection());
-        create.transaction(configuration -> {
+        var dsl = using(context.getConnection());
+        dsl.transaction(configuration -> {
 
             using(configuration)
                 .createTable("marca")

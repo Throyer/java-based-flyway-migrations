@@ -8,8 +8,8 @@ import org.flywaydb.core.api.migration.Context;
 public class V2021052711191622168370__tabela_veiculos extends BaseJavaMigration {
 
     public void migrate(Context context) throws Exception {
-        var create = using(context.getConnection());
-        create.transaction(configuration -> {
+        var dsl = using(context.getConnection());
+        dsl.transaction(configuration -> {
             using(configuration)
                 .createTable("veiculo")
                     .column("id", BIGINT.identity(true))
