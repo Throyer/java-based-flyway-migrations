@@ -5,7 +5,7 @@ Então fui atras de tentar trazer a mesma experiencia no javinha ❤️.
 
 E eu consegui um resultado legal. A ideia por traz disso é bem simples na realidade eu juntei duas bibliotecas extremamente populares do mundo java e criei um script sh pra mais conveniência.
 
-o script [migration_create](./migration_create.sh) é basicamente um comando de terminal que cria um arquivo de migração com os timestamps, dentro desse arquivo que é uma migração do flyway eu crio uma querydsl utilizando o jooq e ta feito o sorvetinho kkkk. 
+o script [migration_create](https://github.com/Throyer/java-based-flyway-migrations/blob/master/migartion_create.sh) é basicamente um comando de terminal que cria um arquivo de migração com os timestamps, dentro desse arquivo que é uma migração do flyway eu crio uma querydsl utilizando o jooq e ta feito o sorvetinho kkkk. 
 
 um exemplo comparando uma migração feita com `typeorm` vs minha migração (`flyway + jooq`):
 
