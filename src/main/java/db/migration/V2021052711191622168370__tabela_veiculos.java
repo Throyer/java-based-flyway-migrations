@@ -18,6 +18,7 @@ public class V2021052711191622168370__tabela_veiculos extends BaseJavaMigration 
                     .column("cor", VARCHAR(255).nullable(true))
                     .column("preco", DECIMAL(10, 2).nullable(true))
                     .column("quantidade_portas", INTEGER.nullable(true))
+                    .column("ano", INTEGER.nullable(true))
                 .constraints(
                     primaryKey("id"))
                 .execute();

@@ -30,6 +30,9 @@ public class Veiculo {
     @Column(name = "quantidade_portas")
     private Integer quantidadeDePortas;
 
+    @Column(name = "ano")
+    private Integer ano;
+
     @ManyToOne()
     private Modelo modelo;
 
@@ -90,4 +93,13 @@ public class Veiculo {
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
+    
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
+
 }
