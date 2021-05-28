@@ -92,6 +92,9 @@ public class V2021052711191622168370__tabela_veiculos extends BaseJavaMigration 
     }
 }
 ```
+As migrações mais completas, com chave estrangeira e etc tambem são bem mais simples de se fazer com o jooq [link da pasta das migrações](https://github.com/Throyer/java-based-flyway-migrations/tree/master/src/main/java/db/migration).
+
+Futuramente eu pretendo fazer uma biblioteca pro maven e deixar esse comando que cria as migrações mais esperto e quem sabe fazer umas opção de rollback e drop tambem...
 
 # Spring boot
 link das configurações do spring initializ que eu usei: https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.0.RELEASE&packaging=jar&jvmVersion=16&groupId=com.github&artifactId=concessionaria&name=concessionaria&description=concession%C3%A1ria%20api&packageName=com.github.concessionaria&dependencies=data-jpa,mysql,web,devtools,flyway,validation
