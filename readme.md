@@ -7,8 +7,44 @@ E eu consegui um resultado legal. A ideia por traz disso é bem simples na reali
 
 o script [migration_create](https://github.com/Throyer/java-based-flyway-migrations/blob/master/migartion_create.sh) é basicamente um comando de terminal que cria um arquivo de migração com os timestamps, dentro desse arquivo que é uma migração do flyway eu crio uma querydsl utilizando o jooq e ta feito o sorvetinho kkkk. 
 
-um exemplo comparando uma migração feita com `typeorm` vs minha migração (`flyway + jooq`):
+> 🚨 **eu já criei uma biblioteca pra auxilio na criação das migrações**
+>
+>> acessa lá 👀 [![Release](https://jitpack.io/v/throyer/migration-maven-plugin.svg)](https://jitpack.io/#throyer/migration-maven-plugin)
 
+## um exemplo comparando uma migração feita com `typeorm` vs minha migração (`flyway + jooq`):
+
+### Java
+```java
+package db.migration;
+
+import static org.jooq.impl.DSL.*;
+import static org.jooq.impl.SQLDataType.*;
+import org.flywaydb.core.api.migration.BaseJavaMigration;
+import org.flywaydb.core.api.migration.Context;
+
+public class V2021052711191622168370__tabela_veiculos extends BaseJavaMigration {
+
+    public void migrate(Context context) throws Exception {
+        var dsl = using(context.getConnection());
+        dsl.transaction(configuration -> {
+            using(configuration)
+                .createTable("veiculo")
+                    .column("id", BIGINT.identity(true))
+                    .column("placa", VARCHAR(255).nullable(true))
+                    .column("quilometragem", INTEGER.nullable(true))
+                    .column("cor", VARCHAR(255).nullable(true))
+                    .column("preco", DECIMAL(10, 2).nullable(true))
+                    .column("quantidade_portas", INTEGER.nullable(true))
+                .constraints(
+                    primaryKey("id"))
+                .execute();
+        });
+    }
+}
+```
+
+
+### Typescript
 ```ts
 import { MigrationInterface, QueryRunner, Table, TableColumn } from "typeorm";
 
@@ -63,35 +99,6 @@ export class tabelaVeiculos1622166625338 implements MigrationInterface {
 }
 ```
 
-
-```java
-package db.migration;
-
-import static org.jooq.impl.DSL.*;
-import static org.jooq.impl.SQLDataType.*;
-import org.flywaydb.core.api.migration.BaseJavaMigration;
-import org.flywaydb.core.api.migration.Context;
-
-public class V2021052711191622168370__tabela_veiculos extends BaseJavaMigration {
-
-    public void migrate(Context context) throws Exception {
-        var dsl = using(context.getConnection());
-        dsl.transaction(configuration -> {
-            using(configuration)
-                .createTable("veiculo")
-                    .column("id", BIGINT.identity(true))
-                    .column("placa", VARCHAR(255).nullable(true))
-                    .column("quilometragem", INTEGER.nullable(true))
-                    .column("cor", VARCHAR(255).nullable(true))
-                    .column("preco", DECIMAL(10, 2).nullable(true))
-                    .column("quantidade_portas", INTEGER.nullable(true))
-                .constraints(
-                    primaryKey("id"))
-                .execute();
-        });
-    }
-}
-```
 As migrações mais completas, com chave estrangeira e etc tambem são bem mais simples de se fazer com o jooq [link da pasta das migrações](https://github.com/Throyer/java-based-flyway-migrations/tree/master/src/main/java/db/migration).
 
 Futuramente eu pretendo fazer uma biblioteca pro maven e deixar esse comando que cria as migrações mais esperto e quem sabe fazer umas opção de rollback e drop tambem...
