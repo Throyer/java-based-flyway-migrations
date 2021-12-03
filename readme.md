@@ -9,7 +9,7 @@ o script [migration_create](https://github.com/Throyer/java-based-flyway-migrati
 
 > 🚨 **eu já criei uma biblioteca pra auxilio na criação das migrações**
 >
->> acessa lá 👀 [![Release](https://jitpack.io/v/throyer/migration-maven-plugin.svg)](https://jitpack.io/#throyer/migration-maven-plugin)
+>> [acessa lá 👀](https://github.com/Throyer/migration-maven-plugin#flyway-migrations-generator-plugin) [![Release](https://jitpack.io/v/throyer/migration-maven-plugin.svg)](https://jitpack.io/#throyer/migration-maven-plugin)
 
 ## um exemplo comparando uma migração feita com `typeorm` vs minha migração (`flyway + jooq`):
 
